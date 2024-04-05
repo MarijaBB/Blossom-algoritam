@@ -220,14 +220,14 @@ Algoritam se zaustavlja kada nema više alternirajućih puteva u grafu, to jest 
 \section{Analiza složenosti \textit{Blossom} algoritma}
 \vspace{0.5cm}
 \noindent\textbf{Vremenska složenost algoritma}\\ \\
-Na početku postoji $|V|$ slobodnih čvorova. Za svaki od tih čvorova izvršavamo pretragu u širinu da bismo pronašli alternirajući put, koja radi u vremenskoj složenosti $O(|V|+|E|) = O(|E|)$ za povezane grafove. Pored BFS-a, moramo izvršiti najviše $|V|$ kontrakcija (a samim tim i najviše $|V|$ proširenja). Jedna kontrakcija (proširenje) se može izvršiti u vremenu $O(|E|)$ jer u najgorem slučaju moramo da skupimo sve čvorove i grane u jedan čvor. Nakon što smo pronašli alternirajući put, invertovanje grana u najgorem slučaju zahteva vreme $O(|V|)$. Sve u svemu, ovo dovodi do ukupnog vremena rada $O(|V| \cdot (|E|+|E||V|+|V|))=O(|V|^2|E|)$.
+Na početku postoji $|V|$ slobodnih čvorova. Za svaki od tih čvorova izvršavamo pretragu u širinu da bismo pronašli alternirajući put, koja radi u vremenskoj složenosti $O(|V|+|E|) = O(|E|)$ za povezane grafove. Pored BFS-a, moramo izvršiti najviše $|V|$ kontrakcija (a samim tim i najviše $|V|$ proširenja). Jedna kontrakcija (proširenje) se može izvršiti u vremenu $O(|E|)$ jer u najgorem slučaju moramo da skupimo sve čvorove i grane u jedan čvor. Nakon što smo pronašli alternirajući put, invertovanje grana u najgorem slučaju zahteva vreme $O(|V|)$. Sve u svemu, ovo dovodi do ukupnog vremena rada $O(|V| \cdot (|E|+|E||V|+|V|))=O(|V|^2|E|)$. \cite{sajt5}
 \vspace{0.5cm}\\
 \textbf{Kako se algoritam može poboljšati?} \\ \\
 Postoji mnogo prostora za poboljšanje performansi algoritma. Neke ideje Mikalijevog i Vaziranijevog algoritma dodatno smanjuju vreme rada na $O(\sqrt{|V|}|E|)$:
 \begin{itemize}
 \item Umesto da izvodimo BFS iz jednog slobodnog čvora, mogli bismo da pokrenemo BFS iz svih slobodnih čvorova istovremeno. Na taj način možemo pronaći nekoliko disjunktnih alternirajućih puteva odjednom i povećati kardinalnost uparivanja za više od 1.
 \item Ne moraju se svi cvetovi odmah skupiti. Postoji takozvani uslov cvetanja koji određuje da li moramo da sklopimo ciklus neparne dužine ili možemo to da odložimo.
-\item Posebna tehnika obeležavanja omogućava brzo širenje cvetova.
+\item Posebna tehnika obeležavanja omogućava brzo širenje cvetova.\cite{sajt5}
 \end{itemize}
 Štaviše, Edmonds tvrdi da, pod određenim okolnostima, 'superčvorovi' (čvorovi nastali skupljanjem cvetova) mogu biti ostavljeni kontrahovani sve dok njihovo proširenje nije zaista potrebno \cite{knjiga2}. U našoj implementaciji, proširujemo sve superčvorove u grafu kada pronađemo putanju za povećanje, ali u mnogim slučajevima to nije neophodno.
 
